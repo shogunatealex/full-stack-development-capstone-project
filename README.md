@@ -1,4 +1,6 @@
-# Full Stack Trivia API Backend
+Heroku App URL: https://udacity-capstone-alex-a234.herokuapp.com
+
+# Full Stack Capstone Project
 
 ## Getting Started
 
@@ -57,6 +59,13 @@ Errors are returned as JSON objects in the following format:
 
 NOTE: the actual error code will come in the response object. Like response.status_code
 
+
+## Permissions
+
+Executive Producer: All permissions
+Casting Director: All permissions except creating and deleting movies
+Casting Assistant: Only get actors and get movies
+
 ## Endpoints
 
 
@@ -112,7 +121,7 @@ NOTE: the actual error code will come in the response object. Like response.stat
 ### PATCH /actors/<actor-id>
 - General:
   - Will update an actor based on an actor id. Will only update the values supplied and the full record is returned
-- Sample: ```bash curl http:127.0.0.1:5000/actors -X POST -H "Content-Type: application/json -d {"name": "Bill The Murray"} ```
+- Sample: ```bash curl http:127.0.0.1:5000/actors/1 -X PATCH -H "Content-Type: application/json -d {"name": "Bill The Murray"} ```
 ```json
 {
     "actors": {
@@ -174,5 +183,22 @@ NOTE: the actual error code will come in the response object. Like response.stat
 }
 ```
   
+  
+### PATCH /movies/<movie-id>
+- General:
+  - Will update a movie based on a movie id. Will only update the values supplied and the full record is returned
+- Sample: ```bash curl http:127.0.0.1:5000/movies/1 -X PATCH -H "Content-Type: application/json -d {"title": "New Title"} ```
+```json
+{
+    "movies": {
+        "1": {
+            "id": 1,
+            "release_date": "01/01/2020",
+            "title": "New Title"
+        }
+    },
+    "success": true
+}
 
+```
 
