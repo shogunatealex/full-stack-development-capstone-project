@@ -128,56 +128,51 @@ NOTE: the actual error code will come in the response object. Like response.stat
 
 ```
 
-### GET /categories
+### GET /movies
 - General:
-  - Retrieves a list of categories where the key is the category id and the value is the name of the category
-- Sample: ```bash curl http:127.0.0.1:5000/categories ```
+  - Retrieves a list of movies. Movies contain a title and a release date.
+- Sample: ```bash curl http:127.0.0.1:5000/movies ```
 ```json
 {
-  "categories": {
-    "1": "history"
-  }
+    "movies": {
+        "1": {
+            "id": 1,
+            "release_date": "01/01/2020",
+            "title": "Another Fantastic Movie 3"
+        }
+    },
+    "success": true
 }
 
 ```
 
-### GET /categories/<category_id>/questions
+### POST /movies
 - General:
-  - Retrieves a list of questions that match a specific category id. Returns a list of the total questions, the total questions, the current cateogry, and a success flag
-- Sample: ```bash curl http:127.0.0.1:5000/categories/1/questions ```
+  - Adds a new movie to the database
+- Sample: ```bash curl http:127.0.0.1:5000/movies -X POST -H "Content-Type: application/json -d {"title" : "Another Fantastic Movie 3","release_date": "01/01/2020"} ```
 ```json
 {
-  "current_category": "history", 
-  "questions": [
-    {
-      "answer": "really good", 
-      "category": "history", 
-      "difficulty": 2, 
-      "id": 1, 
-      "question": "How good are these pancackes"
-    }, 
-  ], 
-  "success": true, 
-  "total_questions": 1
+    "movies": {
+        "1": {
+            "id": 1,
+            "release_date": "01/01/2020",
+            "title": "Another Fantastic Movie 3"
+        }
+    },
+    "success": true
 }
 ```
 
-### POST /quizzes
+### DELETE /movies/<movie-id>
 - General:
-  - Takes an array of previous questions and the quiz category and returns a random question not yet taken for the quiz
-- Sample: ```bash curl http:127.0.0.1:5000/quizzes -X POST -H "Content-Type: application/json -d {"previous_questions":[1,4],"quiz_category":{"type":"history","id":"1"}} ```
-
+  - Deletes a movie given an id. Will retrun 404 if the actor is not found. 
+- Sample: ```bash curl http:127.0.0.1:5000/movie/1 -X DELETE ```
 ```json
 {
-  "question": {
-    "answer": "really good", 
-    "category": "history", 
-    "difficulty": 2, 
-    "id": 17, 
-    "question": "How good are these pancackes"
-  }, 
-  "success": true
+    "delete": 1,
+    "success": true
 }
 ```
+  
 
 
