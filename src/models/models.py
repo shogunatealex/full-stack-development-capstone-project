@@ -3,7 +3,7 @@ from sqlalchemy import Column, String, Integer, create_engine
 from flask_sqlalchemy import SQLAlchemy
 import json
 
-database_name = "trivia"
+database_name = "casting"
 database_path = "postgres://{}/{}".format('localhost:5432', database_name)
 
 db = SQLAlchemy()
@@ -33,10 +33,9 @@ class Movie(db.Model):
   title = Column(String)
   release_date = Column(String)
 
-  def __init__(self, title, releaseDate):
-    self.name = name
+  def __init__(self, title, release_date):
     self.title = title
-    self.release_date = releaseDate
+    self.release_date = release_date
 
   def insert(self):
     db.session.add(self)
