@@ -16,7 +16,7 @@ Follow instructions to install the latest version of python for your platform in
 Once you have your virtual environment setup and running, install dependencies by naviging to the `/backend` directory and running:
 
 ```bash
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 This will install all of the required packages we selected within the `requirements.txt` file.
@@ -36,9 +36,7 @@ From within the `backend` directory first ensure you are working using your crea
 To run the server, execute:
 
 ```bash
-export FLASK_APP=api
-export FLASK_ENV=development
-flask run
+ gunicorn wsgi:app
 ```
 
 Setting the `FLASK_ENV` variable to `development` will detect file changes and restart the server automatically.
