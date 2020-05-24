@@ -17,7 +17,6 @@ def create_app(test_config=None, database=None):
         setup_db(app, database)
     CORS(app)
 
-
     @app.route('/actors')
     @requires_auth('read:actors')
     def get_actors(payload):
@@ -28,8 +27,7 @@ def create_app(test_config=None, database=None):
         return jsonify({
             "success": True,
             "actors": data
-            })
-
+        })
 
     @app.route('/actors', methods=['POST'])
     @requires_auth('create:actor')
@@ -38,9 +36,9 @@ def create_app(test_config=None, database=None):
         body = {}
         try:
             actor = Actor(name=req['name'],
-                        age=req['age'],
-                        gender=req['gender'],
-                        )
+                          age=req['age'],
+                          gender=req['gender'],
+                          )
             Actor.insert(actor)
             body['name'] = req['name']
             body['age'] = req['age']
@@ -51,13 +49,12 @@ def create_app(test_config=None, database=None):
             abort(422)
         return jsonify({
             "success": True,
-            "actors": 
+            "actors":
             {
                 body["id"]: body
-                
-            } 
-        }) 
 
+            }
+        })
 
     @app.route('/actors/<int:actor_id>', methods=['DELETE'])
     @requires_auth('delete:actor')
@@ -66,7 +63,7 @@ def create_app(test_config=None, database=None):
         try:
             effected_rows = Actor.query.filter_by(id=actor_id).delete()
             if(effected_rows < 1):
-                abort(404) 
+                abort(404)
             db.session.commit()
         except Exception:
             db.session.rollback()
@@ -78,7 +75,7 @@ def create_app(test_config=None, database=None):
         else:
             return jsonify({
                 'success': True,
-                "delete" : actor_id
+                "delete": actor_id
             })
 
     @app.route('/actors/<int:actor_id>', methods=['PATCH'])
@@ -106,12 +103,11 @@ def create_app(test_config=None, database=None):
             db.session.close()
         return jsonify({
             "success": True,
-            "actors": 
+            "actors":
             {
                 body["id"]: body
-            } 
-        }) 
-
+            }
+        })
 
     @app.route('/movies')
     @requires_auth('read:movies')
@@ -123,8 +119,7 @@ def create_app(test_config=None, database=None):
         return jsonify({
             "success": True,
             "movies": data
-            })
-
+        })
 
     @app.route('/movies', methods=['POST'])
     @requires_auth('create:movie')
@@ -133,8 +128,8 @@ def create_app(test_config=None, database=None):
         body = {}
         try:
             movie = Movie(title=req['title'],
-                        release_date=req['release_date'],
-                        )
+                          release_date=req['release_date'],
+                          )
             Movie.insert(movie)
             body['title'] = req['title']
             body['release_date'] = req['release_date']
@@ -146,13 +141,12 @@ def create_app(test_config=None, database=None):
             db.session.close()
         return jsonify({
             "success": True,
-            "movies": 
+            "movies":
             {
                 body["id"]: body
-                
-            } 
-        }) 
 
+            }
+        })
 
     @app.route('/movies/<int:movie_id>', methods=['DELETE'])
     @requires_auth('delete:movie')
@@ -161,7 +155,7 @@ def create_app(test_config=None, database=None):
         try:
             effected_rows = Movie.query.filter_by(id=movie_id).delete()
             if(effected_rows < 1):
-                abort(404) 
+                abort(404)
             db.session.commit()
         except Exception:
             db.session.rollback()
@@ -173,10 +167,8 @@ def create_app(test_config=None, database=None):
         else:
             return jsonify({
                 'success': True,
-                "delete" : movie_id
+                "delete": movie_id
             })
-
-
 
     @app.route('/movies/<int:movie_id>', methods=['PATCH'])
     @requires_auth('edit:movie')
@@ -201,30 +193,28 @@ def create_app(test_config=None, database=None):
             db.session.close()
         return jsonify({
             "success": True,
-            "actors": 
+            "actors":
             {
                 body["id"]: body
-            } 
-        }) 
-
+            }
+        })
 
     @app.errorhandler(404)
     def not_found_error(error):
         return jsonify({
-        "success": False,
-        "message": "The resource could not be found",
-        "status_code": 404
+            "success": False,
+            "message": "The resource could not be found",
+            "status_code": 404
         }), 404
-
 
     @app.errorhandler(422)
     def improperlyFormatted(error):
         return jsonify({
-        "success": False,
-        "message": "There is something wrong with the request",
-        "status_code": 422
+            "success": False,
+            "message": "There is something wrong with the request",
+            "status_code": 422
         }), 422
-    
+
     @app.errorhandler(AuthError)
     def authentification_failed(AuthError):
         return jsonify({

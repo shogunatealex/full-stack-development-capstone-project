@@ -12,18 +12,20 @@ API_AUDIENCE = environ.get('API_AUDIENCE')
 
 # Note, all code was gathered from doing the lessons and copying the instructor
 
-## AuthError Exception
+# AuthError Exception
 '''
 AuthError Exception
 A standardized way to communicate auth failure modes
 '''
+
+
 class AuthError(Exception):
     def __init__(self, error, status_code):
         self.error = error
         self.status_code = status_code
 
 
-## Auth Header
+# Auth Header
 def get_token_auth_header():
     """Obtains the Access Token from the Authorization Header
     """
@@ -56,17 +58,20 @@ def get_token_auth_header():
     token = parts[1]
     return token
 
-'''     
+
+'''
     @INPUTS
         permission: string permission (i.e. 'post:drink')
         payload: decoded jwt payload
 '''
+
+
 def check_permissions(permission, payload):
     if 'permissions' not in payload:
-                        raise AuthError({
-                            'code': 'invalid_claims',
-                            'description': 'Permissions not included in JWT.'
-                        }, 400)
+        raise AuthError({
+            'code': 'invalid_claims',
+            'description': 'Permissions not included in JWT.'
+        }, 400)
     if permission not in payload['permissions']:
         raise AuthError({
             'code': 'unauthorized',
@@ -74,12 +79,14 @@ def check_permissions(permission, payload):
         }, 403)
     return True
 
-''' 
+
+'''
     @INPUTS
         token: a json web token (string)
 
-    !!NOTE urlopen has a common certificate error described here: https://stackoverflow.com/questions/50236117/scraping-ssl-certificate-verify-failed-error-for-http-en-wikipedia-org
 '''
+
+
 def verify_decode_jwt(token):
     jsonurl = urlopen(f'https://{AUTH0_DOMAIN}/.well-known/jwks.json')
     jwks = json.loads(jsonurl.read())
@@ -120,7 +127,8 @@ def verify_decode_jwt(token):
         except jwt.JWTClaimsError:
             raise AuthError({
                 'code': 'invalid_claims',
-                'description': 'Incorrect claims. Please, check the audience and issuer.'
+                'description': 'Incorrect claims. \
+                    Please, check the audience and issuer.'
             }, 401)
         except Exception:
             raise AuthError({
@@ -128,15 +136,18 @@ def verify_decode_jwt(token):
                 'description': 'Unable to parse authentication token.'
             }, 400)
     raise AuthError({
-                'code': 'invalid_header',
+        'code': 'invalid_header',
                 'description': 'Unable to find the appropriate key.'
-            }, 400)
+    }, 400)
+
 
 '''
     @INPUTS
         permission: string permission (i.e. 'post:drink')
 
 '''
+
+
 def requires_auth(permission=''):
     def requires_auth_decorator(f):
         @wraps(f)
@@ -148,4 +159,3 @@ def requires_auth(permission=''):
 
         return wrapper
     return requires_auth_decorator
-
