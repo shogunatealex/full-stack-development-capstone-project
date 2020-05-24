@@ -59,6 +59,8 @@ You will be able to find this application on 127.0.0.1:8000
 
 This application includes a postman collection that is preconfigured to test all the endpoints. It can be imported via postman and the various endpoints can be tested. All three tokens are stored as environment variables in the collection. Feel free to change them out in the collection's authorization tab to test the different roles. It's preconfigured for the executive producer token.
 
+In postman there is also a variable named domain. Changing that to https://udacity-capstone-alex-a234.herokuapp.com will allow you to test the live version of the endpoints.
+
 
 ## Error Handling
 
