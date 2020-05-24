@@ -1,13 +1,14 @@
 import json
+from os import environ
 from flask import request, _request_ctx_stack, abort, jsonify
 from functools import wraps
 from jose import jwt
 from urllib.request import urlopen
 
 
-AUTH0_DOMAIN = 'nihondo.auth0.com'
-ALGORITHMS = ['RS256']
-API_AUDIENCE = 'udacity-capstone'
+AUTH0_DOMAIN = environ.get('AUTH0_DOMAIN')
+ALGORITHMS = [environ.get('ALGORITHMS')]
+API_AUDIENCE = environ.get('API_AUDIENCE')
 
 # Note, all code was gathered from doing the lessons and copying the instructor
 

@@ -8,10 +8,13 @@ from models.models import setup_db, Actor, Movie, db
 from auth.auth import AuthError, requires_auth
 
 
-def create_app(test_config=None):
+def create_app(test_config=None, database=None):
 
     app = Flask(__name__)
-    setup_db(app)
+    if (database is None):
+        setup_db(app)
+    else:
+        setup_db(app, database)
     CORS(app)
 
 

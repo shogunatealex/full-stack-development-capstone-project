@@ -16,7 +16,7 @@ class CastingTestCase(unittest.TestCase):
         self.app = create_app()
         self.client = self.app.test_client
         self.database_name = "casting_test"
-        self.database_path = "postgres://gxtdxhamsmsszs:387470945beafe05daefae6cd86ff6a03f2a65026bab45b6aaed8465ccc922d4@ec2-34-200-72-77.compute-1.amazonaws.com:5432/d4d3kr08t2gdcl"
+        self.database_path = "postgres://localhost:5432/casting_test"
         setup_db(self.app, self.database_path)
 
 
@@ -96,13 +96,24 @@ class CastingTestCase(unittest.TestCase):
     def test_patch_actor(self):
         actor = Actor.query.first()
 
-        res = self.client().patch('/movies/' + str(actor.id),headers={
+        res = self.client().patch('/actors/' + str(actor.id),headers={
                                             "Authorization": "Bearer {}".format(
                                                 self.executive_producer)
                                             },  
                                             json=self.new_actor_patch)
         data = json.loads(res.data)
         self.assertEqual(data['success'], True)
+        pass
+
+    def test_patch_actor_404(self):
+        res = self.client().patch('/actors/23432423423',headers={
+                                            "Authorization": "Bearer {}".format(
+                                                self.executive_producer)
+                                            },  
+                                            json=self.new_actor_patch)
+        data = json.loads(res.data)
+        self.assertEqual(data['success'], False)
+        self.assertEqual(res.status_code, 404)
         pass
 
     def test_actors_successfully_grabbed(self):
@@ -113,6 +124,13 @@ class CastingTestCase(unittest.TestCase):
         data = json.loads(res.data)
         self.assertTrue(len(data['actors']))
         self.assertEqual(data['success'], True)
+    
+    def test_actors_401(self):
+        res = self.client().get('/actors')
+        data = json.loads(res.data)
+        self.assertEqual(data['success'], False)
+        self.assertEqual(res.status_code, 401)
+
 
 
     def test_post_movie(self):
@@ -151,6 +169,17 @@ class CastingTestCase(unittest.TestCase):
         self.assertEqual(data['success'], True)
         pass
 
+    def test_patch_movie_404(self):
+        res = self.client().patch('/movies/2342342423' ,headers={
+                                            "Authorization": "Bearer {}".format(
+                                                self.executive_producer)
+                                            },  
+                                            json=self.new_movie_patch)
+        data = json.loads(res.data)
+        self.assertEqual(data['success'], False)
+        self.assertEqual(res.status_code, 404)
+        pass
+
 
 
     def test_403_post_movie_casting_director(self):
@@ -173,6 +202,12 @@ class CastingTestCase(unittest.TestCase):
         self.assertTrue(len(data['movies']))
         self.assertEqual(data['success'], True)
 
+    def test_movies_401(self):
+        res = self.client().get('/movies')
+        data = json.loads(res.data)
+        self.assertEqual(res.status_code, 401)
+        self.assertEqual(data['success'], False)
+
 
     def test_delete_actor(self):
 
@@ -188,6 +223,30 @@ class CastingTestCase(unittest.TestCase):
         self.assertTrue(newActor is None)
         self.assertEqual(res.status_code, 200)
         self.assertEqual(newData['success'], True)
+    
+
+    def test_delete_actor_404(self):
+        res = self.client().delete('/actors/234324234',
+                                            headers={
+                                            "Authorization": "Bearer {}".format(
+                                                self.casting_director)
+                                            })
+        newData = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 404)
+        self.assertEqual(newData['success'], False)
+
+
+    def test_delete_movie_404(self):
+        res = self.client().delete('/movies/234234234234',
+                                            headers={
+                                            "Authorization": "Bearer {}".format(
+                                                self.executive_producer)
+                                            })
+        newData = json.loads(res.data)
+        self.assertEqual(res.status_code, 404)
+        self.assertEqual(newData['success'], False)
+
 
     def test_delete_movie(self):
 
