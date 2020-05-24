@@ -2,6 +2,18 @@ Heroku App URL: https://udacity-capstone-alex-a234.herokuapp.com
 
 # Full Stack Capstone Project
 
+This app is the capstone project for the udacity full stack nanodegree. It is used to showcase the collection of knowlege in the app that includes how to create a full stack application. This application utilizes the following tech stack.
+
+SQLAlchemy: as our ORM
+PostgreSQL: as our database
+Python3: and Flask as our server language and server framework
+Gunicorn: as our python server
+Flask-Migrate: for creating and running schema migrations
+Auth0: as our authentication provider
+Heroku: as a way to showcase our application
+
+
+
 ## Getting Started
 
 ### Installing Dependencies
@@ -36,12 +48,16 @@ From within the `backend` directory first ensure you are working using your crea
 To run the server, execute:
 
 ```bash
- gunicorn wsgi:app
+./setup.sh
 ```
 
-Setting the `FLASK_ENV` variable to `development` will detect file changes and restart the server automatically.
+This will automatically install all dependencies, export the basic variables for the application and start the gunicorn server.
 
-Setting the `FLASK_APP` variable to `api` directs flask to use the `api` directory and the `__init__.py` file to find the application. 
+You will be able to find this application on 127.0.0.1:8000
+
+## Testing & Authentication
+
+This application includes a postman collection that is preconfigured to test all the endpoints. It can be imported via postman and the various endpoints can be tested. All three tokens are stored as environment variables in the collection. Feel free to change them out in the collection's authorization tab to test the different roles. It's preconfigured for the executive producer token.
 
 
 ## Error Handling

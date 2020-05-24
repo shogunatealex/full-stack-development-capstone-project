@@ -18,6 +18,8 @@ AuthError Exception
 A standardized way to communicate auth failure modes
 '''
 
+# https://nihondo.auth0.com/authorize?audience=udacity-capstone&response_type=token&client_id=v4kwXRHK2PuzFqb4qDm1hQ5RQFOqw2dZ&redirect_uri=http://localhost:8080
+
 
 class AuthError(Exception):
     def __init__(self, error, status_code):

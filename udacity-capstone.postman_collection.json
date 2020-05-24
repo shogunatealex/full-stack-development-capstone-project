@@ -1,0 +1,244 @@
+{
+	"info": {
+		"_postman_id": "65f5724b-9565-4784-ad23-05d57f8c6e56",
+		"name": "udacity-capstone",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "domain/actors",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{domain}}/actors",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"actors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "domain/actors",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"David Spade\",\n\t\"age\": 57,\n\t\"gender\": \"male\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/actors",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"actors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "domain/actors/1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{domain}}/actors/1",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"actors",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "domain/actors/4",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Bill The Murray\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/actors/4",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"actors",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "domain/movies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{domain}}/movies",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "domain/movies",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\" : \"Another Fantastic Movie 3\",\n\t\"release_date\": \"01/01/2020\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/movies",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "domain/movies/1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{domain}}/movies/2",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"movies",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "domian/movies/3",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Another Fanatsic Movie 5000\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/movies/3",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"movies",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjVzUWZSd1FrTHhyU20zQTBSc3gzNyJ9.eyJpc3MiOiJodHRwczovL25paG9uZG8uYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDVlYzE1M2M2NTgzMGE5MGM2ZmU5YmM4MyIsImF1ZCI6InVkYWNpdHktY2Fwc3RvbmUiLCJpYXQiOjE1OTAyNjkwOTgsImV4cCI6MTU5MDM1NTQ5OCwiYXpwIjoidjRrd1hSSEsyUHV6RnFiNHFEbTFoUTVSUUZPcXcyZFoiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImNyZWF0ZTphY3RvciIsImNyZWF0ZTptb3ZpZSIsImRlbGV0ZTphY3RvciIsImRlbGV0ZTptb3ZpZSIsImVkaXQ6YWN0b3IiLCJlZGl0Om1vdmllIiwicmVhZDphY3RvcnMiLCJyZWFkOm1vdmllcyJdfQ.UmcVcd2H8UQla4YFdVEwzCurNofPBZkrMj0BX8yRYmihkFe5NdMl9kmAtX_A55v0DORqGErvBLjdAmUHYC1TafBlt0r-s5gC5J_sA7OFxHyMgzTMSlZaeoWJRtYhidMSThJk_0KJolw85y4BUBPX03_7SlZt3B4GgiIFDqsDzPErZL0CKOuMHk9NkUxZ9t-FqOyYqu6tA_6-hqpieCNBu5O2335j2RXp9Y28tl5XXMCDLGUrcdYJFStuW6biv6S6_xA5s7dG4X54sP8-oKoQKGyMJTFwLArBRsYGhzOBAhOugssqUK5RfenxLb75DKcJLXlJixp0WLBLX8YjXKc7RQ",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "7f1ed141-12a3-4c4e-90f6-3e1cfac296b0",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "470458ba-3544-4cd0-9e97-846190d2d992",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "fdb50a24-9eac-4532-9dba-e43edcade03d",
+			"key": "domain",
+			"value": "127.0.0.1:8000",
+			"type": "string"
+		},
+		{
+			"id": "745fdf2f-c2ad-4bfb-aabd-468cec22015f",
+			"key": "executive_director_token",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjVzUWZSd1FrTHhyU20zQTBSc3gzNyJ9.eyJpc3MiOiJodHRwczovL25paG9uZG8uYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDVlYzE1M2M2NTgzMGE5MGM2ZmU5YmM4MyIsImF1ZCI6InVkYWNpdHktY2Fwc3RvbmUiLCJpYXQiOjE1OTAzMzczNDksImV4cCI6MTU5MDQyMzc0OSwiYXpwIjoidjRrd1hSSEsyUHV6RnFiNHFEbTFoUTVSUUZPcXcyZFoiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImNyZWF0ZTphY3RvciIsImNyZWF0ZTptb3ZpZSIsImRlbGV0ZTphY3RvciIsImRlbGV0ZTptb3ZpZSIsImVkaXQ6YWN0b3IiLCJlZGl0Om1vdmllIiwicmVhZDphY3RvcnMiLCJyZWFkOm1vdmllcyJdfQ.RIUyuCEbhRuhk9R1S6AcIxt29jD3rI3W-JsHjoZbz9McyhYrnBejzVcx0iDgmehiXBBL2Sz4ritzoKEA1D0uFafBIMUsvQlNtoPFhEiOsxQtjlZSsK0lMUw4lUIsOT3zPBRJ7WKwXXREXi6j2AOxTce8o3WyrSmFJXGMVQUn0Xtx0nYdBO_brko9jQfCEa5Jrb19LYIuyRpxjXH83l6piIoPapgl2pSFTo-dDfD-6Eowch8UCVfp5EURXzO9FnJOjVki9vq04-zlOuEvkRWK9we0fY3vY1QuyUNBDxUGO4_sEEUZwhnIL9hr7rVpvlt8nKon_5aM6fK1wlk3_xCrjg",
+			"type": "string"
+		},
+		{
+			"id": "c610702f-76bd-41f8-aad1-32f701d5c98b",
+			"key": "casting_assistant_token",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjVzUWZSd1FrTHhyU20zQTBSc3gzNyJ9.eyJpc3MiOiJodHRwczovL25paG9uZG8uYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDVlYzk5MjU0Zjc5MDhjMGM2OGEyZjA3OSIsImF1ZCI6InVkYWNpdHktY2Fwc3RvbmUiLCJpYXQiOjE1OTAzMzc1NTQsImV4cCI6MTU5MDQyMzk1NCwiYXpwIjoidjRrd1hSSEsyUHV6RnFiNHFEbTFoUTVSUUZPcXcyZFoiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbInJlYWQ6YWN0b3JzIiwicmVhZDptb3ZpZXMiXX0.dOnHZgkAy0WuMglwYHd8i4jJO6s8ND1024pHKm9cKey5aCozoDMEwW4lSUjT7UUy1_WcGIYsPZGWsBf1tGjASlUCHKDrNvqSURtZ42FlVNzTXNnfAfnnXlaTyfBqSu1NQ9ZFI2Lu-Thgiwuu1bA_0Pquvzps1A3G2akNMeDCsluw0jGwaVJ9Zff2wncjAEuX4GDX0nrlH5K235epkOjPz5Ei5Mv-KO8IaiQ_EY2JzSHjI13h9lT2Zl9xxFnBtshZsC2rAvJO-g-2l2AiI8Rt7zI9WPOwWxBF--joyVJbtvsWZ3kVdA8Wlwk47iUWSk1bvsA0dgWMG1bdRBP3teAcgg",
+			"type": "string"
+		},
+		{
+			"id": "68576e0b-a489-4e10-8018-dd8460278737",
+			"key": "casting_director_token",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjVzUWZSd1FrTHhyU20zQTBSc3gzNyJ9.eyJpc3MiOiJodHRwczovL25paG9uZG8uYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDVlYzE1M2Y0NDUzZTIzMGM3MWQ5MzIyNiIsImF1ZCI6InVkYWNpdHktY2Fwc3RvbmUiLCJpYXQiOjE1OTAzMzc0ODAsImV4cCI6MTU5MDQyMzg4MCwiYXpwIjoidjRrd1hSSEsyUHV6RnFiNHFEbTFoUTVSUUZPcXcyZFoiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImNyZWF0ZTphY3RvciIsImRlbGV0ZTphY3RvciIsImVkaXQ6YWN0b3IiLCJlZGl0Om1vdmllIiwicmVhZDphY3RvcnMiLCJyZWFkOm1vdmllcyJdfQ.Hj86AzdbXALp4JQZGLVzQBc6JdBck8XzPkmUqsAZflRYg-pNGKb69wf5z4d1y2kJ8Eo-ZbrrHcgq5nPxeVBHVMlgszbK5goI-1sPfZiv988p6G-KPBAlpocpwQAp6hiY-rRp4cZiG92rilGJx9aFw6J_kvoT9Rr_16PT6zq4JvWN5UhOzcTr0A2FRljS-IoYgG6IJTibomwD3Bj1JkZVXkAbShyM7Ii5pevwFwO742lx-W2i4ssiknPVqOzd1EmGbYEckcHei5_sww3YEFPVfsB0l_54PcZqh9pXXRV6T46X18Mv1u6p_MoYunIHUFfOrv0qCFjsqN008Coyh2Cozw",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
