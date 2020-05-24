@@ -9,7 +9,7 @@ from models.models import setup_db, Movie, Actor
 
 
 class CastingTestCase(unittest.TestCase):
-    """This class represents the trivia test case"""
+    """This class represents the casting test case"""
 
     def setUp(self):
         """Define test variables and initialize app."""
